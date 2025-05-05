@@ -1,5 +1,5 @@
 # ECE20875-MiniProject-Path3
-Objective
+**Objective**
 The aim of this project is to evaluate and compare the robustness of three classification algorithms - Gaussian Naive Bayes (GaussianNB), K-Nearest Neighbors (KNN), and Multi-Layer Perception (MLP), we will be testing these three algorithm with three different scenario of the digit image under clean, poisoned, and denoised conditions.
 Code explanation (Step by step implementation)
 Part 1-2: Data Extraction and Visualization, we implemented two helper functions:
