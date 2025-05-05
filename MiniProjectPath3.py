@@ -59,7 +59,6 @@ class_number_images , class_number_labels = dataset_searcher_one_each(class_numb
 #Part 2
 print_numbers(class_number_images[:5], class_number_labels[:5])
 
-
 def OverallAccuracy(results, actual_values):
   #Calculate the overall accuracy of the model (out of the predicted labels, how many were correct?)
     return np.mean(results == actual_values)
@@ -104,7 +103,7 @@ Model3_Overall_Accuracy = OverallAccuracy(model3_results, y_test)
 #Part 8
 #Poisoning
 # Code for generating poison data. There is nothing to change here.
-noise_scale = 5.0
+noise_scale = 10
 poison = rng.normal(scale=noise_scale, size=X_train.shape)
 X_train_poison = X_train + poison
 X_train_poison_reshaped = X_train_poison.reshape(X_train_poison.shape[0], -1)
@@ -137,9 +136,8 @@ print("MLP Accuracy (Poisoned):", acc_poisoned_3)
 # hint --> Suggest using KernelPCA method from sklearn library, for denoising the data. 
 # When fitting the KernelPCA method, the input image of size 8x8 should be reshaped into 1 dimension
 # So instead of using the X_train_poison data of shape 718 (718 images) by 8 by 8, the new shape would be 718 by 64
-
 X_train_poison_flat = X_train_poison.reshape(X_train_poison.shape[0], -1)
-kpca = KernelPCA(n_components=50, kernel='linear', random_state=0)
+kpca = KernelPCA(n_components=10, kernel='linear', random_state=0)
 X_train_denoised = kpca.fit_transform(X_train_poison_flat)
 X_test_denoised = kpca.transform(X_test_reshaped)
 
